@@ -1,0 +1,42 @@
+.pointers {
+  display: flex;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pointers__left,
+.pointers__right {
+  width: 6rem;
+  text-align: center;
+}
+
+.pointers__center {
+  display: flex;
+  justify-content: space-between;
+
+  & > * {
+    height: 2rem;
+    min-width: 4.6rem;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.pointers__icon-x {
+  width: 6rem;
+  margin: 0 1rem;
+  background-image: url("x_grey.svg");
+}
+
+.pointers__icon-arr-left {
+  background-image: url("arr-grey.svg");
+  transform: rotate(180deg);
+}
+
+.pointers__icon-arr-right {
+  background-image: url("arr-blue.svg");
+}

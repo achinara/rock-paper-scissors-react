@@ -1,0 +1,39 @@
+.board {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.board__left,
+.board__right {
+  width: 6rem;
+}
+
+.board__center {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+
+.board__levels {
+
+}
+
+.board__icon-rival,
+.board__icon-user {
+  flex: 1;
+  height: 7rem;
+  margin: 0 1rem;
+  align-self: center;
+  background-position: 50% 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.board__icon-rival {
+  background-image: url("./paper_rival.svg");
+}
+
+.board__icon-user {
+  background-image: url("./paper_user_red.svg");
+}

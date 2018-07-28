@@ -1,0 +1,30 @@
+.artifacts {
+  display: flex;
+  justify-content: space-between; }
+
+.artifact {
+  flex: 1;
+  height: 10.2rem;
+  border: 1px solid rgba(43, 42, 41, 0.3);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: contain; }
+  @media screen and (max-width: 400px) {
+    .artifact {
+      height: 9.2rem; } }
+
+.artifact + .artifact {
+  margin-left: .5rem; }
+
+.artifact_rock {
+  background-image: url("rock_my_hover.svg"); }
+
+.artifact_scissors {
+  background-image: url("scissors_my.svg"); }
+  .artifact_scissors:hover {
+    background-image: url("scissors_my_hover.svg"); }
+
+.artifact_paper {
+  background-image: url("paper_my.svg"); }
+  .artifact_paper:hover {
+    background-image: url("paper_my_hover.svg"); }
