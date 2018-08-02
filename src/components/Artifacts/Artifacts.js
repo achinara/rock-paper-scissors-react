@@ -1,24 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactTooltip from 'react-tooltip'
 import './Artifacts.css';
 
-class Artifacts extends Component {
-  constructor(props){
-    super(props);
-  }
+const Artifacts = ({handleMove=f=>f}) => {
 
-  render() {
+    const artifacts = {
+      rock: 'Камень',
+      scissors: 'Ножницы',
+      paper: 'Бумага'
+    };
+
     return(
       <div>
         <div className='artifacts'>
-          <div className='artifact artifact_rock' tabIndex='1' data-tip='Камень'/>
-          <div className='artifact artifact_scissors' tabIndex='1' data-tip='Ножницы'/>
-          <div className='artifact artifact_paper' tabIndex='1' data-tip='Бумага'/>
+          {Object.keys(artifacts).map(artifact =>
+            <div className={`artifact artifact_${artifact}`}
+                 tabIndex='1'
+                 data-tip={artifacts[artifact]}
+                 onClick={() => handleMove(artifact)}
+            />
+          )}
         </div>
         <ReactTooltip place='bottom' type='info' className='artifact__tooltip'/>
       </div>
     )
-  }
+
 }
 
 export default Artifacts;

@@ -32,11 +32,20 @@
   background-image: url("x_grey.svg");
 }
 
+.blue.pointers__icon-x {
+  background-image: url("x_blue.svg");
+}
+
 .pointers__icon-arr-left {
   background-image: url("arr-grey.svg");
   transform: rotate(180deg);
 }
 
 .pointers__icon-arr-right {
+  background-image: url("arr-grey.svg");
+}
+
+.blue.pointers__icon-arr-left,
+.blue.pointers__icon-arr-right {
   background-image: url("arr-blue.svg");
 }

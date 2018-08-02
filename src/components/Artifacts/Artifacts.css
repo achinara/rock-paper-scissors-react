@@ -27,18 +27,18 @@
 .artifact_paper {
   background-image: url("paper_user.svg"); }
 
-.lets_go .artifact {
+._moves .artifact {
   transition: box-shadow .2s; }
-  .lets_go .artifact:hover {
+  ._moves .artifact:hover {
     box-shadow: inset 0 0 1.1rem rgba(226, 74, 74, 0.5); }
 
-.lets_go .artifact_rock:hover {
+._moves .artifact_rock:hover {
   background-image: url("rock_user_red.svg"); }
 
-.lets_go .artifact_scissors:hover {
+._moves .artifact_scissors:hover {
   background-image: url("scissors_user_red.svg"); }
 
-.lets_go .artifact_paper:hover {
+._moves .artifact_paper:hover {
   background-image: url("paper_user_red.svg"); }
 
 .artifact__tooltip.__react_component_tooltip.type-info {

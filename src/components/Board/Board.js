@@ -20,7 +20,7 @@ class Board extends Component {
         <div className='board__center'>
           <div className='board__icon-rival'/>
           <div className='board__levels'>
-            <Level className=''/>
+            <Level className='blue'/>
             <Level className='green'/>
             <Level className='yell'/>
             <Level className='orange'/>
@@ -33,7 +33,7 @@ class Board extends Component {
           <Level className=''/>
           <Level className=''/>
           <Level className=''/>
-          <Level className='blue'/>
+          <Level className=''/>
         </div>
       </div>
     )

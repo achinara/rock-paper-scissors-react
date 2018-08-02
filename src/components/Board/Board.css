@@ -1,7 +1,8 @@
 .board {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  transition: all 2s linear; }
 
 .board__left,
 .board__right {

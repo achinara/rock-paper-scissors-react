@@ -16,7 +16,6 @@
   @media screen and (max-width: 400px){
     height: 9.2rem;
   }
-
 }
 
 .artifact + .artifact {
@@ -35,7 +34,7 @@
   background-image: url("paper_user.svg");
 }
 
-.lets_go {
+._moves {
   .artifact {
     transition: box-shadow .2s;
 

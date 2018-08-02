@@ -10,7 +10,7 @@ class Button extends Component {
   render() {
     const rootClassName = classnames('button', this.props.className);
     return(
-      <button className={rootClassName} onClick={this.props.click}/>
+      <button className={rootClassName} onClick={this.props.onClick}/>
     )
   }
 }
