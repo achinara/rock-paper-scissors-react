@@ -23,8 +23,20 @@
   background-size: contain;
   background-repeat: no-repeat; }
 
-.board__icon-rival {
+.board__icon-rival.paper {
   background-image: url("./paper_rival.svg"); }
 
-.board__icon-user {
-  background-image: url("./paper_user_red.svg"); }
+.board__icon-user.paper {
+  background-image: url("./paper_user.svg"); }
+
+.board__icon-rival.scissors {
+  background-image: url("./scissors_rival.svg"); }
+
+.board__icon-user.scissors {
+  background-image: url("./scissors_user.svg"); }
+
+.board__icon-rival.rock {
+  background-image: url("./rock_rival.svg"); }
+
+.board__icon-user.rock {
+  background-image: url("./rock_user.svg"); }

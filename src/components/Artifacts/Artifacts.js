@@ -18,6 +18,7 @@ const Artifacts = ({handleMove=f=>f}) => {
                  tabIndex='1'
                  data-tip={artifacts[artifact]}
                  onClick={() => handleMove(artifact)}
+                 key={artifact}
             />
           )}
         </div>

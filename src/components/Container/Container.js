@@ -10,12 +10,11 @@ import './Main.css';
 class Container extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      gameOn: false
-    }
 
-    this.steps = 0;
-    this.levels = 5;
+    this.state = {
+      gameOn: false,
+      preloadOn: false
+    }
 
     this.texts = {
       redText: {
@@ -33,18 +32,31 @@ class Container extends Component {
       }
     }
 
+    this.count = 5; //count of levels
+    this.passed = 0; //passed levels
+    this.levelsColors = [
+      'blue',
+      'green',
+      'yell',
+      'orange',
+      'red'
+    ];
+
     this.point = {
-      user: 0,
-      rival: 0,
-      draw: false
-    }
+      win: ['','','','',''],
+      loss: ['','','','',''],
+      levels: this.levelsColors,
+      signRival: '',
+      signUser: ''
+    };
+
+    this.result = '';
   }
 
-  handleOnMove = (sign) => {
+  handleOnMove = (signUser) => {
     if (!this.state.gameOn) return;
 
-    this.steps++;
-    this.setState({gameOn: false});
+    this.setState({gameOn: false, preloadOn: true});
 
     const PAPER = 'paper',
           SCISSORS = 'scissors',
@@ -54,46 +66,76 @@ class Container extends Component {
       PAPER, SCISSORS, ROCK
     ];
 
+    const total = [
+      'loss', 'win', 'draw'
+    ];
+
     const random = Math.floor(Math.random() * 3 );
-    let result = 'loss';
+    const signRival = ranges[random];
 
-    // paper and paper || scissors and scissors || rock and rock
-    if (sign  === ranges[random]) {
-      result = 'draw';
+    this.stopPreloader();
+
+    // consider, result has loss
+
+    let result = total[0];
+    let {passed, count, point } = this;
+
+    if (signUser  === signRival) {
+      result = total[2];
+      point.draw = true;
     }
 
-    if (sign === PAPER && ranges[random] === ROCK) {
-      result = 'win';
+    if (signUser === PAPER && signRival === ROCK) {
+      result = total[1];
     }
 
-    if (sign === SCISSORS && ranges[random] === PAPER) {
-      result = 'win';
+    if (signUser === SCISSORS && signRival === PAPER) {
+      result = total[1];
     }
 
-    if (sign === ROCK && ranges[random] === SCISSORS) {
-      result = 'win';
+    if (signUser === ROCK && signRival === SCISSORS) {
+      result = total[1];
     }
-    console.log(`'--- sign, ranges[random], random, result:'`, sign, ranges[random], random, result);
+
+    if (result === total[1] || result === total[0]) {
+      passed++;
+      point[result][count - passed] = point.levels[passed-1];
+      point.levels[passed-1] = '';
+      point.draw = false;
+    }
+
+    point.signRival = signRival;
+    point.signUser = signUser;
+    this.result = result;
+    this.passed = passed;
+    this.point = point;
+  }
+
+  stopPreloader = () => {
+    this.timer = setTimeout(()=> {
+      this.setState({
+        gameOn: true, preloadOn: false
+      })
+    }, 2000)
   }
 
   componentWillUpdate(nextProps, nextState) {
-    const {steps, levels} = this;
     const {redText, blueText, resultText} = this.texts;
+    this.showTexts = [redText.start];
 
-    if (!steps) this.showtext = redText.start;
-    if (steps && steps < levels) this.showtext = redText.continue;
+    // if (steps && levels) {
+    //   this.showTexts = [blueText[this.result],redText.continue];
+    // }
   }
 
-
   render() {
-
-    const {gameOn} = this.state;
+    const {gameOn, preloadOn} = this.state;
 
     const getBody = () => {
-      const {steps, levels} = this;
-      if (!gameOn && !steps) return <Button onClick = {() => this.setState({gameOn: true})}/>;
-      if (!gameOn && steps) return <Preloader/>;
-      if (gameOn) return <Moves point={this.point} text={this.showtext}/>;
+      if (!gameOn && !preloadOn) return <Button onClick = {() => this.setState({gameOn: true})}/>;
+      if (preloadOn) return <Preloader/>;
+      if (gameOn) return <Moves point={this.point} texts={this.showTexts} result={this.result}/>;
+      return <Result/>
     };
 
     const rootClassName = classnames('container', {'_moves':gameOn});

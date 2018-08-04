@@ -1,23 +1,16 @@
 import React, {Component} from 'react';
 import Text from "../Text/Text";
-import Board from '../Board/Board';
+import {Board} from '../Board/Board';
 import {Pointers} from '../Pointers/Pointers';
 
-class Moves extends Component {
-  constructor(props){
-    super(props);
-  }
-
-  render() {
-    const {text} = this.props;
-    return(
-      <div>
-        <Pointers {...this.props.point} />
-        <Board/>
-        <Text text={text}/>
-      </div>
-    )
-  }
+const Moves = ({texts, result, point}) => {
+  return(
+    <div>
+      <Pointers result = {result} />
+      <Board {...point}/>
+      {texts.map((text, i, arr) => <Text text={text} key={i} className={!i && arr.length > 1 && 'text_blue'}/>)}
+    </div>
+  )
 }
 
 export default Moves;
