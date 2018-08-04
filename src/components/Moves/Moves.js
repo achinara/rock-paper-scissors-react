@@ -7,7 +7,7 @@ const Moves = ({texts, result, point}) => {
   return(
     <div>
       <Pointers result = {result} />
-      <Board {...point}/>
+      <Board {...point} result={result}/>
       {texts.map((text, i, arr) => <Text text={text} key={i} className={!i && arr.length > 1 && 'text_blue'}/>)}
     </div>
   )

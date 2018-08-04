@@ -116,16 +116,12 @@ class Container extends Component {
       this.setState({
         gameOn: true, preloadOn: false
       })
-    }, 2000)
+    }, 1000)
   }
 
   componentWillUpdate(nextProps, nextState) {
     const {redText, blueText, resultText} = this.texts;
     this.showTexts = [redText.start];
-
-    // if (steps && levels) {
-    //   this.showTexts = [blueText[this.result],redText.continue];
-    // }
   }
 
   render() {

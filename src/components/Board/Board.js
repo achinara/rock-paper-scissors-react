@@ -2,7 +2,7 @@ import React from 'react';
 import Level from '../level/Level.js';
 import './Board.css';
 
-const Board = ({win=[], loss=[], levels=[], signRival='', signUser=''}) => {
+const Board = ({win=[], loss=[], levels=[], signRival='', signUser='', result=''}) => {
   console.log('--- loss', loss);
   return(
     <div className='board'>
@@ -10,11 +10,11 @@ const Board = ({win=[], loss=[], levels=[], signRival='', signUser=''}) => {
         {loss.map(level => <Level className={level ? level : ''}/>)}
       </div>
       <div className='board__center'>
-        <div className={`board__icon-rival ${signRival}`}/>
+        <div className={`board__icon-rival ${signRival} ${result}`}/>
         <div className='board__levels'>
           {levels.map(level => <Level className={level ? level : ''}/>)}
         </div>
-        <div className={`board__icon-user ${signUser}`}/>
+        <div className={`board__icon-user ${signUser} ${result}`}/>
       </div>
       <div className='board__user'>
         {win.map(level => <Level className={level ? level : ''}/>)}

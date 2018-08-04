@@ -23,6 +23,12 @@
   background-size: contain;
   background-repeat: no-repeat; }
 
+.board__icon-rival {
+  background-image: url("./finger-upp-rival.svg"); }
+
+.board__icon-user {
+  background-image: url("./scissors_user_upp.svg"); }
+
 .board__icon-rival.paper {
   background-image: url("./paper_rival.svg"); }
 
@@ -40,3 +46,21 @@
 
 .board__icon-user.rock {
   background-image: url("./rock_user.svg"); }
+
+.board__icon-rival.paper.loss {
+  background-image: url("./paper_rival_red.svg"); }
+
+.board__icon-user.paper.win {
+  background-image: url("./paper_user_red.svg"); }
+
+.board__icon-rival.scissors.loss {
+  background-image: url("./scissors_rival_red.svg"); }
+
+.board__icon-user.scissors.win {
+  background-image: url("./scissors_user_red.svg"); }
+
+.board__icon-rival.rock.loss {
+  background-image: url("./rock_rival_red.svg"); }
+
+.board__icon-user.rock.win {
+  background-image: url("./rock_user_red.svg"); }
