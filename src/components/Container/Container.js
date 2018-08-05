@@ -33,9 +33,7 @@ class Container extends Component {
       }
     }
 
-    this.count = 5; //count of levels
-    this.passed = 0; //passed levels
-    this.levelsColors = [
+    this.colors = [
       'blue',
       'green',
       'yell',
@@ -43,14 +41,21 @@ class Container extends Component {
       'red'
     ];
 
+    this.count = 5; //count of levels
+    this.setDefault();
+  }
+
+  setDefault = () => {
+    this.passed = 0; //passed levels
+    this.result = '';
+
     this.point = {
       win: ['','','','',''],
       loss: ['','','','',''],
-      levels: this.levelsColors,
+      levels: [...this.colors],
       signRival: '',
       signUser: ''
     };
-    this.result = '';
   }
 
   handleOnMove = (signUser) => {
@@ -73,16 +78,17 @@ class Container extends Component {
     const random = Math.floor(Math.random() * 3 );
     const signRival = ranges[random];
 
-    // consider, result has loss
-
+    // consider, result is loss
     let result = total[0];
     let {passed, count, point } = this;
 
+    // result is loss
     if (signUser  === signRival) {
       result = total[2];
       point.draw = true;
     }
 
+    // result is win
     if (signUser === PAPER && signRival === ROCK) {
       result = total[1];
     }
@@ -116,7 +122,16 @@ class Container extends Component {
       this.setState({
         gameOn: isGameOn, preloadOn: false, finish: !isGameOn
       })
-    }, 1000)
+    }, 800)
+  }
+
+  onReload = () => {
+    this.setDefault();
+    this.setState({
+      gameOn: true,
+      preloadOn: false,
+      finish: false
+    });
   }
 
   componentWillMount() {
@@ -144,7 +159,7 @@ class Container extends Component {
         text = res > count/2 ? 'win' : 'loss',
         resultText = this.texts.resultText[text];
 
-      return <Footer text={resultText} value={`${res} : ${count - res}`}/>
+      return <Footer text={resultText} value={`${res} : ${count - res}`} onClick={this.onReload}/>
     };
 
     const rootClassName = classnames('container', {'_moves': gameOn});
