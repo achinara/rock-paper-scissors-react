@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import classnames from 'classnames';
 import Artifacts from '../Artifacts/Artifacts';
-import Button from "../Button/Button";
 import Preloader from "../Preloader/Preloader";
 import Moves from "../Moves/Moves";
-import Result from '../Result/Result';
+import Footer from '../Footer/Footer';
 import './Main.css';
 
 class Container extends Component {
@@ -12,23 +11,25 @@ class Container extends Component {
     super(props);
 
     this.state = {
-      gameOn: false,
-      preloadOn: false
+      gameOn: true,
+      preloadOn: false,
+      finish: false
     }
 
     this.texts = {
       redText: {
         start: 'Выбери свой вариант для начала игры!',
-        continue: 'Выбери свой вариант для продолжения!'
+        continue: 'Выбери свой вариант для продолжения!',
+        finish: 'Пройдены все туры.'
       },
       blueText: {
         win: 'Ты победил в этом туре!',
-        loss: 'Ты проиграл в этом туре (((',
+        loss: 'Ты проиграл в этом туре ((',
         draw: 'В этом туре - ничья.'
       },
       resultText: {
-        win: 'Ты победитель! Молодец!',
-        loss: 'Проигрыш ('
+        win: 'Победа!',
+        loss: 'Проигрыш.'
       }
     }
 
@@ -49,7 +50,6 @@ class Container extends Component {
       signRival: '',
       signUser: ''
     };
-
     this.result = '';
   }
 
@@ -72,8 +72,6 @@ class Container extends Component {
 
     const random = Math.floor(Math.random() * 3 );
     const signRival = ranges[random];
-
-    this.stopPreloader();
 
     // consider, result has loss
 
@@ -109,38 +107,54 @@ class Container extends Component {
     this.result = result;
     this.passed = passed;
     this.point = point;
+
+    this.stopPreloader(count !== passed);
   }
 
-  stopPreloader = () => {
+  stopPreloader = (isGameOn) => {
     this.timer = setTimeout(()=> {
       this.setState({
-        gameOn: true, preloadOn: false
+        gameOn: isGameOn, preloadOn: false, finish: !isGameOn
       })
     }, 1000)
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    const {redText, blueText, resultText} = this.texts;
-    this.showTexts = [redText.start];
+  componentWillMount() {
+    this.contentTexts = [this.texts.redText.start];
+  }
+
+  componentWillUpdate() {
+    const {redText, blueText} = this.texts;
+    const {passed, count, result} = this;
+    const note = (count !== passed) ? 'continue' : 'finish';
+    this.contentTexts = [blueText[result], redText[note]];
   }
 
   render() {
-    const {gameOn, preloadOn} = this.state;
+    const {gameOn, preloadOn, finish} = this.state;
+    const {point, result, contentTexts, count} = this;
 
-    const getBody = () => {
-      if (!gameOn && !preloadOn) return <Button onClick = {() => this.setState({gameOn: true})}/>;
+    const getContent = () => {
       if (preloadOn) return <Preloader/>;
-      if (gameOn) return <Moves point={this.point} texts={this.showTexts} result={this.result}/>;
-      return <Result/>
+      return <Moves point={point} texts={contentTexts} result={result}/>;
+    };
+    
+    const getFooter = () => {
+      const res = point.win.filter(item => item !== '').length,
+        text = res > count/2 ? 'win' : 'loss',
+        resultText = this.texts.resultText[text];
+
+      return <Footer text={resultText} value={`${res} : ${count - res}`}/>
     };
 
-    const rootClassName = classnames('container', {'_moves':gameOn});
+    const rootClassName = classnames('container', {'_moves': gameOn});
     return(
       <div className={rootClassName}>
         <Artifacts handleMove = {this.handleOnMove}/>
         <div className='content'>
-          {getBody()}
+          {getContent()}
         </div>
+        {finish && getFooter()}
       </div>
     )
   }

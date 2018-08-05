@@ -1,3 +1,38 @@
 .footer {
-  width: 100%;
+  margin: .5rem 0 2rem;
+  padding: 1.3rem 1rem;
+  border: 1px solid rgba(43,42,41, .3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer__left {
+  display: flex;
+  align-items: center;
+}
+
+.footer__text, .footer__value  {
+  margin-top: 0;
+  text-align: left;
+  font-size: 1.3rem;
+}
+
+.footer__text {
+  color: rgba(114, 114, 114, .9);
+  text-transform: capitalize;
+  letter-spacing: .3px;
+}
+
+.footer__value {
+  text-align: left;
+  margin-left: .8rem;
+}
+
+.footer_button {
+  background: rgba(114, 114, 114, 0.45);
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+  padding: .3rem 1rem;
+  border-radius: .3rem;
+  color: white;
 }

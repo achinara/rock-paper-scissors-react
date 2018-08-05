@@ -3,7 +3,6 @@ import Level from '../level/Level.js';
 import './Board.css';
 
 const Board = ({win=[], loss=[], levels=[], signRival='', signUser='', result=''}) => {
-  console.log('--- loss', loss);
   return(
     <div className='board'>
       <div className='board__rival'>
