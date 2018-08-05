@@ -23,6 +23,12 @@
   background-size: contain;
   background-repeat: no-repeat; }
 
+.board__left.loss {
+  color: #C7040A; }
+
+.board__right.win {
+  color: #C7040A; }
+
 .board__icon-rival {
   background-image: url("./finger-upp-rival.svg"); }
 

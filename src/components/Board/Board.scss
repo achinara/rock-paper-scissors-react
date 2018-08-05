@@ -16,10 +16,6 @@
   justify-content: space-between;
 }
 
-.board__levels {
-
-}
-
 .board__icon-rival,
 .board__icon-user {
   flex: 1;
@@ -29,6 +25,14 @@
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.board__left.loss {
+  color: #C7040A;
+}
+
+.board__right.win {
+  color: #C7040A;
 }
 
 .board__icon-rival {

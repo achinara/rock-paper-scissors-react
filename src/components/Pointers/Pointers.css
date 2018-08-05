@@ -11,6 +11,12 @@
   width: 6rem;
   text-align: center; }
 
+.pointers__left.loss {
+  color: #C7040A; }
+
+.pointers__right.win {
+  color: #C7040A; }
+
 .pointers__center {
   display: flex;
   justify-content: space-between; }
@@ -26,7 +32,7 @@
   margin: 0 1rem;
   background-image: url("x_grey.svg"); }
 
-.blue.pointers__icon-x {
+.draw.pointers__icon-x {
   background-image: url("x_blue.svg"); }
 
 .pointers__icon-arr-left {
@@ -36,6 +42,6 @@
 .pointers__icon-arr-right {
   background-image: url("arr-grey.svg"); }
 
-.blue.pointers__icon-arr-left,
-.blue.pointers__icon-arr-right {
+.loss.pointers__icon-arr-left,
+.win.pointers__icon-arr-right {
   background-image: url("arr-blue.svg"); }
