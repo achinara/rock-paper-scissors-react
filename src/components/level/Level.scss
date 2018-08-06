@@ -4,14 +4,15 @@
   border-radius: 1rem;
   margin-bottom: .5rem;
   background-color: #EBECEC;
-}
-
-.level.green {
-  background-color: #009846;
+  transition: background-color 300ms ease-in;
 }
 
 .level.blue {
   background-color: #008DD2;
+}
+
+.level.green {
+  background-color: #009846;
 }
 
 .level.yell {
@@ -24,4 +25,90 @@
 
 .level.red {
   background-color: #C7040A;
+}
+
+
+._anim .board__levels {
+  .level.blue {
+    background-color: #008DD2;//FECC00
+    animation: bgChange 1s;
+  }
+
+  .level.green {
+    background-color: #009846;//008DD2
+    animation: bgChange1 1s;
+  }
+
+  .level.yell {
+    background-color: #FECC00;//EF7F1A
+    animation: bgChange2 1s;
+  }
+
+  .level.orange {
+    background-color: #EF7F1A;//C7040A
+    animation: bgChange3 1s;
+  }
+
+  .level.red {
+    background-color: #C7040A;//009846
+    animation: bgChange4 1s;
+  }
+}
+
+@keyframes bgChange {
+  0% {
+    background-color: #018DD8;
+  }
+  40% {
+    background-color: #C7040A;
+  }
+  100% {
+    background-color: #018DD8;
+  }
+}
+@keyframes bgChange1 {
+  0% {
+    background-color: #009846;
+  }
+  40% {
+    background-color: #EF7F1A;
+  }
+  100% {
+    background-color: #009846;
+  }
+}
+@keyframes bgChange2 {
+  0% {
+    background-color: #FECC00;
+  }
+  40% {
+    background-color: #feec00;
+  }
+  100% {
+    background-color: #FECC00;
+  }
+}
+
+@keyframes bgChange3 {
+  0% {
+    background-color: #EF7F1A;
+  }
+  40% {
+    background-color: #009846;
+  }
+  100% {
+    background-color: #EF7F1A;
+  }
+}
+
+@keyframes bgChange4 {
+  0% {
+    background-color: #C7040A;
+  }
+  35% {
+    background-color: #018DD8;
+  }
+  100% {
+    background-color: #C7040A;
+  }
 }

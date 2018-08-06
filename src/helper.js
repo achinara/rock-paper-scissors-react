@@ -1,6 +1,6 @@
 import {colorModificators, countTours} from './constants';
 
-const handleOnMove = (signUser, obj, stopPreloader) => {
+const handleOnMove = (signUser, obj) => {
   const PAPER = 'paper',
     SCISSORS = 'scissors',
     ROCK = 'rock';
@@ -52,7 +52,7 @@ const handleOnMove = (signUser, obj, stopPreloader) => {
   obj.passed = passed;
   obj.point = point;
 
-  stopPreloader(countTours !== obj.passed);
+  //stopPreloader(countTours !== obj.passed);
 }
 
 const setDefault = (obj) => {

@@ -26,7 +26,7 @@ const Container = ({tourDetails, preloadOn=false, gameOn=true, finish=false, han
     return <Footer text={resultText} value={`${res} : ${countTours - res}`} onClick={onReload}/>
   };
 
-  const rootClassName = classnames('container', {'_moves': gameOn});
+  const rootClassName = classnames('container', {'_moves': gameOn}, {'_anim': !gameOn});
 
   return(
     <div className={rootClassName}>

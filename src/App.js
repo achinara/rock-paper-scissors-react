@@ -20,17 +20,18 @@ class App extends Component {
 
   handleOnMove = (signUser) => {
     if (!this.state.gameOn) return;
-    this.setState({gameOn: false, preloadOn: true});
+    this.setState({gameOn: false});
 
-    handleOnMove(signUser, tourDetails, this.stopPreloader);
-  };
-
-  stopPreloader = (isGameOn) => {
     this.timer = setTimeout(()=> {
+      handleOnMove(signUser, tourDetails);
+
+      const isFinish = countTours !== tourDetails.passed;
+
       this.setState({
-        gameOn: isGameOn, preloadOn: false, finish: !isGameOn
+        gameOn: isFinish, preloadOn: false, finish: !isFinish
       })
-    }, 800)
+    }, 1000)
+
   };
 
   onReload = () => {
@@ -46,7 +47,8 @@ class App extends Component {
     tourDetails.contentTexts = [texts.start];
   }
 
-  componentWillUpdate() {
+  componentWillUpdate(nextProps, nextState) {
+    if(!nextState.gameOn) return;
     const {passed, result} = tourDetails;
     const note = (countTours !== passed) ? 'continue' : 'finish';
     tourDetails.contentTexts = [texts[result], texts[note]];
