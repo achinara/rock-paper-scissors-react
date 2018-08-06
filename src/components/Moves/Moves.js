@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Text from "../Text/Text";
 import {Board} from '../Board/Board';
 import {Pointers} from '../Pointers/Pointers';

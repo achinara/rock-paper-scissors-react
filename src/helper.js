@@ -1,5 +1,4 @@
 import {colorModificators, countTours} from './constants';
-import tourDetails from './tourDetails';
 
 const handleOnMove = (signUser, obj, stopPreloader) => {
   const PAPER = 'paper',
@@ -56,11 +55,11 @@ const handleOnMove = (signUser, obj, stopPreloader) => {
   stopPreloader(countTours !== obj.passed);
 }
 
-const setDefault = () => {
-  tourDetails.passed = 0; //passed levels
-  tourDetails.result = '';
+const setDefault = (obj) => {
+  obj.passed = 0; //passed levels
+  obj.result = '';
 
-  tourDetails.point = {
+  obj.point = {
     win: ['','','','',''],
     loss: ['','','','',''],
     levels: [...colorModificators],

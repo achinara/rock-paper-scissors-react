@@ -6,17 +6,17 @@ const Board = ({win=[], loss=[], levels=[], signRival='', signUser='', result=''
   return(
     <div className='board'>
       <div className='board__rival'>
-        {loss.map(level => <Level className={level ? level : ''}/>)}
+        {loss.map((level, i) => <Level key={i} className={level ? level : ''}/>)}
       </div>
       <div className='board__center'>
         <div className={`board__icon-rival ${signRival} ${result}`}/>
         <div className='board__levels'>
-          {levels.map(level => <Level className={level ? level : ''}/>)}
+          {levels.map((level, i) => <Level key={i} className={level ? level : ''}/>)}
         </div>
         <div className={`board__icon-user ${signUser} ${result}`}/>
       </div>
       <div className='board__user'>
-        {win.map(level => <Level className={level ? level : ''}/>)}
+        {win.map((level, i) => <Level key={i} className={level ? level : ''}/>)}
       </div>
     </div>
   )
