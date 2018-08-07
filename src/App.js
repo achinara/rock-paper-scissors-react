@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'normalize.css';
 
 import Container from './components/Container/Container';
-import {handleOnMove, setDefault} from './helper';
+import {setResultTour, setDefault} from './helper';
 import {countTours, texts} from "./constants";
 import tourDetails from "./tourDetails";
 
@@ -23,7 +23,7 @@ class App extends Component {
     this.setState({gameOn: false});
 
     this.timer = setTimeout(()=> {
-      handleOnMove(signUser, tourDetails);
+      setResultTour(signUser, tourDetails);
 
       const isFinish = countTours !== tourDetails.passed;
 
@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if(!nextState.gameOn) return;
+    if(!nextState.gameOn && !nextState.finish) return;
     const {passed, result} = tourDetails;
     const note = (countTours !== passed) ? 'continue' : 'finish';
     tourDetails.contentTexts = [texts[result], texts[note]];

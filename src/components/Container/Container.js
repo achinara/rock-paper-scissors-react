@@ -7,7 +7,7 @@ import Moves from "../Moves/Moves";
 import Footer from '../Footer/Footer';
 import './Main.css';
 
-const Container = ({tourDetails, preloadOn=false, gameOn=true, finish=false, handleOnMove=f=>f, onReload=f=>f}) => {
+const Container = ({tourDetails={}, preloadOn=false, gameOn=true, finish=false, handleOnMove=f=>f, onReload=f=>f}) => {
 
   const getContent = () => {
     const {point, result, contentTexts} = tourDetails;
