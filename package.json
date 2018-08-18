@@ -1,7 +1,7 @@
 {
   "name": "rock",
   "version": "0.1.0",
-  "homepage": "http://garmentoria.com/",
+  "homepage": "https://achinara.github.io/rock-paper-scissors-react/",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.6",

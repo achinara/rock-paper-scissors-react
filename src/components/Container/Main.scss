@@ -1,4 +1,6 @@
 html {
+  height: 100%;
+
   @media screen and (max-width: 600px){
     font-size: 2.906976744186047vw;
   }
@@ -7,6 +9,27 @@ html {
 body {
   font-family: 'Roboto Condensed', sans-serif;
   color: rgba(114, 114, 114, .9);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: space-between;
+}
+
+.link {
+  color: #bfbfbf;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: .8rem;
+  font-family: Arial, sans-serif;
+  outline: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.1rem;
+  }
 }
 
 .container {
@@ -21,33 +44,4 @@ body {
   margin-top: .5rem;
   min-height: 20rem;
   border: 1px solid rgba(43,42,41, .3);
-
-  //&::after {
-  //  content: '';
-  //  position: absolute;
-  //  width: 10rem;
-  //  height: 15rem;
-  //  bottom: 0;
-  //  right: 0;
-  //  background-image: url("./pozdravlenie.jpg");
-  //  opacity: 0;
-  //  background-repeat: no-repeat;
-  //  background-position: right bottom;
-  //  background-size: contain;
-  //  animation:  opacit 2s linear;
-  //}
-  //
-  //@keyframes opacit {
-  //  0% {
-  //    opacity: 1;
-  //  }
-  //
-  //  50% {
-  //    opacity: 1;
-  //  }
-  //
-  //  100% {
-  //    opacity: 0;
-  //  }
-  //}
 }

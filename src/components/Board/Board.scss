@@ -25,6 +25,8 @@
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
+  opacity: 1;
+  transition: opacity 400ms ease-out;
 }
 
 .board__left.loss {
@@ -90,4 +92,11 @@
 
 .board__icon-user.rock.win {
   background-image: url("./rock_user_red.svg");
+}
+
+._anim {
+  .board__icon-rival,
+  .board__icon-user {
+    opacity: .7;
+  }
 }

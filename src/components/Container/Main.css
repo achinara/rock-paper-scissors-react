@@ -1,10 +1,29 @@
-@media screen and (max-width: 600px) {
-  html {
-    font-size: 2.906976744186047vw; } }
+html {
+  height: 100%; }
+  @media screen and (max-width: 600px) {
+    html {
+      font-size: 2.906976744186047vw; } }
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
-  color: rgba(114, 114, 114, 0.9); }
+  color: rgba(114, 114, 114, 0.9);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: space-between; }
+
+.link {
+  color: #bfbfbf;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: .8rem;
+  font-family: Arial, sans-serif;
+  outline: none; }
+  .link:hover {
+    text-decoration: none; }
+  @media screen and (max-width: 500px) {
+    .link {
+      font-size: 1.1rem; } }
 
 .container {
   padding: 1rem;
